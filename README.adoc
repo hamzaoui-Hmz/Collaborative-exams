@@ -15,6 +15,7 @@ Concernant les fonctionnalités existantes, nous proposons de les améliorer, s'
 
 Au sujet du plan prévisionnel, il pourrait être amené à changer selon l'état d'avancement lors des différentes itérations et la difficulté des fonctionnalités à implémenter.
 
- 
+Journal de Bord : 13/01/2019
+Au vue de la difficulté de travailler sur un projet de cet envergure, le plan prévisionnel sera changé en cours de route entre la première et la seconde intération.
 
 
