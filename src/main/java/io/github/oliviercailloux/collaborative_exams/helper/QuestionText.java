@@ -1,10 +1,14 @@
 package io.github.oliviercailloux.collaborative_exams.helper;
 
+import java.io.StringWriter;
 import java.util.List;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -55,5 +59,24 @@ public class QuestionText {
 	            String jsonStr = mapperObj.writeValueAsString(o);
 	            return jsonStr;
 	           
+	}
+	
+	public static String questionToXML(Question question) {
+	    String xmlQuestion = "";
+	    try {
+	        JAXBContext context = JAXBContext.newInstance(Question.class);
+	        Marshaller m = context.createMarshaller();
+
+	        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE); // To format XML
+
+	        StringWriter sw = new StringWriter();
+	        m.marshal(question, sw);
+	        xmlQuestion = sw.toString();
+
+	    } catch (JAXBException e) {
+	        e.printStackTrace();
+	    }
+
+	    return xmlQuestion;
 	}
 }
