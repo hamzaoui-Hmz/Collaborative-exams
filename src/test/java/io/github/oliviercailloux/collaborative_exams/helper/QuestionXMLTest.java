@@ -30,7 +30,7 @@ public class QuestionXMLTest {
 	private Person person ;
 	private QuestionType questionType;
 	private String language = "Francais";
-	private String parshing= "Est ce que 2 * 4 = 12 ?";
+	private String parshing= "Est ce que 2 * 8 = 16 ?";
 	private QuestionXML questionXml;
 	private String type = "TF";
 	
@@ -38,25 +38,25 @@ public class QuestionXMLTest {
 	  @Before
 	    public void setUp() {
 		    person = new Person("Personne@outlook.fr");
-            question = new Question(parshing,language, person,questionType.TF,true);
+            question = new Question(parshing,language, person,QuestionType.TF,true);
 	    }
 	 
 	    @After
 	    public void tearDown() throws FileNotFoundException, JAXBException {
-	    	question = QuestionXML.unmarshallerXml(question, "src/main/java/io/github/oliviercailloux/collaborative_exams/controller/questionXMl");
+	    	question = QuestionXML.unmarshallerXml(question, "questionXMl");
 	    }
 	     
 
 	    @Test
 	    public void testObjectToXml() throws NullPointerException, IllegalArgumentException, Exception {
-	    	QuestionXML.QuestionToXML(question, "src/main/java/io/github/oliviercailloux/collaborative_exams/controller/questionXMl");
+	    	QuestionXML.QuestionToXML(question, "questionXMl");
 	    	File fic = new File("questionXMl");
 	    	SAXReader reader =  new SAXReader() ;
 	    	 /**
 	    	  *  read this file using this reader, and build a Document object
 	    	  */
 	    	
-	    	Document doc = reader.read("src/main/java/io/github/oliviercailloux/collaborative_exams/controller/questionXMl") ;
+	    	Document doc = reader.read("questionXMl") ;
 	    	
 	    	/**
 	    	 * constructing the root element of the XML document
@@ -75,7 +75,7 @@ public class QuestionXMLTest {
 	    	  * 
 	    	  */
 	    	List<Element> elements = root.elements() ;
-	    	assertEquals(root.elementText("phrasing"),this.parshing);
+         	assertEquals(root.elementText("phrasing"),this.parshing);
 	    	assertEquals(root.elementText("language"),this.language);
 	    	assertEquals(root.elementText("type"),this.type);
 	    	
