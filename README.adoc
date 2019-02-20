@@ -22,12 +22,32 @@ Implémentation des tests unitaires associés au fur et à mesure.
 
 
 
-* Niveau de difficulté : Pour les QCM, les réponses proposées auront un niveau de difficulté. Les réponses fausses aurons deux compteurs, un pour compter le nombre de participation aux examens, et l'autre pour compter le nombre de fois qu'elle a été sélectionnée par les candidat. le ratio [nombre participation / nombre de sélection ] donne le degré de corrélation entre cette réponse et la bonne réponse, et donc si le ratio est proche de 1 la réponse aura une forte probabilité d'être choisi. Si cette réponse apparaît dans l'examen, on dit que la question est difficile.
+* Niveau de difficulté : Introduire une nouvelle notion QuestionPhrasing, une class contenant (id, phrasing), par la suite la class existante Question  contiendra (id, QuestionPhrasing, … answers, … ParticipateCounter, CorrectAnswersCounter) 
+Exemple : 
+Instance de QuestionPhrasing qp1 : "combien font 2+2 ?".
+Instance de Question q1 : "combien font 2+2 ?" 4 ; 6 ; 8 ; 0 ?
+Instance de Question q2 : "combien font 2+2 ?" 0 ; 4 ?
+(q1 et q2 contiennent chacune une référence vers qp1)
+
+Pour un examen : 
+ParticipateCounter = nombre de candidats participants à l’examen
+CorrectAnswersCounter = Un compteur pour calculer le nombre de candidats qui ont donné une bonne réponse.
+
+Exemple : 
+Pour une Question 
+Exam 1 (20 participants, 10 ont donné la bonne réponse)
+ParticipateCounter = 20
+CorrectAnswersCounter = 10
+Exam 1 (30 participants, 20 ont donné la bonne réponse)
+ParticipateCounter = 20+30 = 50
+CorrectAnswersCounter = 10+20 = 30
+Ainsi de suite.
+Le ratio [CorrectAnswersCounter / ParticipateCounter ] donne le niveau de difficulté de la question (0-0,33 hard; 0,33-0,66 Medium;  0,66-1 Easy)
 
 
 
 *Remarque*
-au début toute les réponse sont proposées au même niveau de corrélation, après un certain nombre d'utilisation
+au début les question sont toutes faciles, après un certain nombre d'utilisation, le ratio aura de plus en plus de sens avec un nombre de population important.
 
 *Mohamed*
 
