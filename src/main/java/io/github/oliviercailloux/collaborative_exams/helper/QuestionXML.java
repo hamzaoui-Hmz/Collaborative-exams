@@ -8,9 +8,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Schema ;
-
+import javax.xml.validation.Validator;
 import io.github.oliviercailloux.collaborative_exams.model.entity.question.Question;
 
 /**
@@ -27,7 +28,7 @@ public class QuestionXML {
 	public static void QuestionToXML(Question question, String FILEPATH) throws NullPointerException, IllegalArgumentException, Exception {
 		try {
 			SchemaFactory sf = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");
-			Schema schema = sf.newSchema(new File("CDMFR-ext1.0.xsd"));
+			Schema schema = sf.newSchema(new File("test.xsd"));
 			System.out.println("ok");
 
 			/**
