@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
 public class QuestionTextTest {
-
+	
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(QuestionTextTest.class.getCanonicalName());
 

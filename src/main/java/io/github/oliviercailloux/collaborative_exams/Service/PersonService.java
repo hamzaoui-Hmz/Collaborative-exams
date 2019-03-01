@@ -12,6 +12,14 @@ import javax.transaction.Transactional;
 import io.github.oliviercailloux.collaborative_exams.helper.QueryHelper;
 import io.github.oliviercailloux.collaborative_exams.model.entity.Person;
 
+
+
+
+/**
+ * 
+ * @author modified by Mohamed 
+ *
+ */
 @RequestScoped
 public class PersonService {
 
@@ -45,6 +53,29 @@ public class PersonService {
 			throw new Exception("Aucun utilisateur correspondant.");
 		return results.get(0);
 
+	}
+	
+	@Transactional
+	public boolean deletAllPerson(){
+		List<Person> query = em.createQuery(helper.selectAll(Person.class)).getResultList();
+		for (Person p : query){
+			Person PersonDeleted =em.merge(p);
+			em.remove(PersonDeleted);
+			
+		}
+		if (!query.isEmpty())
+			return false;
+		return true;
+	}
+	
+	@Transactional
+	public boolean deletPersonById(int id) throws Exception{
+		Person personResult = em.find(Person.class, id);
+		if (personResult == null)
+			return false;
+		em.merge(personResult);
+		em.remove(personResult);
+		return true;
 	}
 
 }

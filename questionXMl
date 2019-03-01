@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<question id="0">
+    <phrasing>Est ce que 2 * 4 = 12 ?</phrasing>
+    <language>Francais</language>
+    <author id="0">
+        <email>Personne@outlook.fr</email>
+    </author>
+    <type>TF</type>
+</question>

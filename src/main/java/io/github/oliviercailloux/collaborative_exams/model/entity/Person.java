@@ -33,6 +33,7 @@ public class Person {
 	 * Represents the person's Id
 	 */
 	private int id;
+	
 
 	@OneToMany(mappedBy = "author")
 	private List<Question> questions;
@@ -43,6 +44,11 @@ public class Person {
 	@Column(nullable = false)
 	@XmlElement
 	private String email;
+	
+	
+	@Column(nullable = false)
+	@XmlElement
+	private String mdp;
 
 	public Person() {
 
