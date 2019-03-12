@@ -16,5 +16,6 @@ deploy:
   organization: valentin.duchemin@dauphine.eu
   space: dev
   region: eu-gb
-
-
+  on:	
+   all_branches: true	
+   condition: $TRAVIS_BRANCH =~ ^Valentin #condition: $TRAVIS_BRANCH =~ ^alex|master #si besoin
