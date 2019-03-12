@@ -11,9 +11,9 @@ cache:
 deploy:
   provider: bluemixcloudfoundry
   skip_cleanup: true
-  username: sid-ahmed.imloul@dauphine.eu
+  username: valentin.duchemin@dauphine.eu
   password: $BLUEMIX_PASSWORD
-  organization: sid-ahmed.imloul@dauphine.eu
+  organization: valentin.duchemin@dauphine.eu
   space: dev
   region: eu-gb
 
