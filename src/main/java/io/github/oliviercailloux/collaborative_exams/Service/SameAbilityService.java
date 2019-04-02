@@ -45,7 +45,6 @@ public class SameAbilityService {
 
 		/*
 		 * idQuestion1 < idQuestion2
-
 		 */
 
 		// The relation is reflexive
@@ -78,5 +77,19 @@ public class SameAbilityService {
 			return false;
 		else
 			return true;
+	}
+	
+	@Transactional
+	public void deleteSameAbility(Person idAuthor, Question idQuestion1, Question idQuestion2) {
+		if (idQuestion1.getId() < idQuestion2.getId()) {
+			em.createQuery(
+					"DELETE FROM SameAbility s WHERE ((s.author = :idAuthor) and (s.question1 = :idQuestion1) and (s.question2 = :idQuestion2))",
+					SameAbility.class);
+			
+		} else {
+			em.createQuery(
+					"DELETE FROM SameAbility s WHERE ((s.author = :idAuthor) and (s.question1 = :idQuestion2) and (s.question2 = :idQuestion1))",
+					SameAbility.class);
+		}
 	}
 }
