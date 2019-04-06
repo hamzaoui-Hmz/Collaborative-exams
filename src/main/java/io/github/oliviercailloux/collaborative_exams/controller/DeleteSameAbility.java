@@ -9,7 +9,7 @@ import io.github.oliviercailloux.collaborative_exams.Service.PersonService;
 import io.github.oliviercailloux.collaborative_exams.Service.QuestionService;
 import io.github.oliviercailloux.collaborative_exams.Service.SameAbilityService;
 
-@Path("deleteSameAbility")
+@Path("DeleteSameAbility")
 public class DeleteSameAbility {
 	@Inject
 	private QuestionService questionService;
