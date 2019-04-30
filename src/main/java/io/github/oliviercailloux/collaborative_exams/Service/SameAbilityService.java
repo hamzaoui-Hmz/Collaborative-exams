@@ -45,7 +45,6 @@ public class SameAbilityService {
 
 		/*
 		 * idQuestion1 < idQuestion2
-
 		 */
 
 		// The relation is reflexive
@@ -78,5 +77,29 @@ public class SameAbilityService {
 			return false;
 		else
 			return true;
+	}
+	
+	@Transactional
+	public void deleteSameAbility(Person idAuthor, Question idQuestion1, Question idQuestion2) {
+		
+		SameAbility sameAbilityResult = findSameAbility(idAuthor, idQuestion1, idQuestion2);
+		em.merge(sameAbilityResult);
+		em.remove(sameAbilityResult);
+
+	}
+	
+	@Transactional
+	public SameAbility findSameAbility(Person idAuthor, Question idQuestion1, Question idQuestion2) {
+		
+		TypedQuery<SameAbility> query;
+		query = em.createQuery("SELECT s FROM SameAbility s WHERE (s.author = :idAuthor and) ((s.question1 = :idQuestion1 and s.question2 = :idQuestion2))",SameAbility.class);
+		query.setParameter("idAuthor", idAuthor);
+		query.setParameter("idQuestion1", idQuestion1);
+		query.setParameter("idQuestion2", idQuestion2);
+		List<SameAbility> results = query.getResultList();
+		if (results.isEmpty())
+			return null;
+		return results.get(0);
+
 	}
 }
